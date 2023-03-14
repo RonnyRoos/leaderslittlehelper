@@ -2,4 +2,12 @@
   <mat-icon>local_fire_department</mat-icon>
   <span>Leader's Little Helper</span>
 </mat-toolbar>
-<app-task *ngFor="let task of todo" [task]="task"></app-task>
+
+<div class="content-wrapper">
+  <button (click)="newHabit()" mat-button>
+    <mat-icon>add</mat-icon>
+    Add Habit
+  </button>
+
+  <app-habit *ngFor="let habit of habits" [habit]="habit"></app-habit>
+</div>

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Task } from './task/task';
+import { MatDialog } from "@angular/material/dialog";
+import { HabitDialogComponent, HabitDialogResult } from "./habit-dialog/habit-dialog.component";
+import { Habit } from "./habit/habit";
 
 @Component({
   selector: 'app-root',
@@ -7,15 +9,39 @@ import { Task } from './task/task';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  todo: Task[] = [
+  habits: Habit[] = [
     {
-      title: 'Buy milk',
-      description: 'Go to the store and buy milk'
+      title: "Do the good stuff",
+      description: "This is where you are supposed to create value for yourself",
+      repeatEntity: "Daily",
+      repeatFrequency: 1
     },
     {
-      title: 'Create a Kanban app',
-      description: 'Using Firebase and Angular create a Kanban app!'
+      title: "Testing derps",
+      description: "Obvious...",
+      repeatEntity: "Daily",
+      repeatFrequency: 1
     }
   ];
   title: any;
+
+  constructor(private dialog: MatDialog) {
+  }
+
+  newHabit(): void {
+    const dialogRef = this.dialog.open(HabitDialogComponent, {
+      width: '270px',
+      data: {
+        habit: {},
+      },
+    });
+    dialogRef
+      .afterClosed()
+      .subscribe((result: HabitDialogResult | undefined) => {
+        if (!result) {
+          return;
+        }
+        this.habits.push(result.habit);
+      });
+  }
 }

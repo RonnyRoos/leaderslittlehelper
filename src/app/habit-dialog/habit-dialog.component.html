@@ -1,0 +1,24 @@
+<mat-form-field>
+  <mat-label>Title</mat-label>
+  <input matInput cdkFocusInitial [(ngModel)]="data.habit.title" />
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Description</mat-label>
+  <textarea matInput [(ngModel)]="data.habit.description"></textarea>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Every</mat-label>
+  <textarea matInput [(ngModel)]="data.habit.repeatFrequency"></textarea>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Repeat entity</mat-label>
+  <textarea matInput [(ngModel)]="data.habit.repeatEntity"></textarea>
+</mat-form-field>
+
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="{ habit: data.habit }">OK</button>
+  <button mat-button (click)="cancel()">Cancel</button>
+</div>
