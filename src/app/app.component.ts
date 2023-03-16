@@ -44,4 +44,27 @@ export class AppComponent {
         this.habits.push(result.habit);
       });
   }
+
+  editHabit(habit: Habit): void {
+    const dialogRef = this.dialog.open(HabitDialogComponent, {
+      width: '270px',
+      data: {
+        habit,
+        enableDelete: true,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result: HabitDialogResult | undefined) => {
+      if (!result) {
+        return;
+      }
+      const habitIndex = this.habits.indexOf(habit);
+      const dataList = this.habits;
+
+      if (result.delete) {
+        this.habits.splice(habitIndex, 1);
+      } else {
+        this.habits[habitIndex] = habit;
+      }
+    });
+  }
 }

@@ -21,4 +21,12 @@
 <div mat-dialog-actions>
   <button mat-button [mat-dialog-close]="{ habit: data.habit }">OK</button>
   <button mat-button (click)="cancel()">Cancel</button>
+  <button
+    *ngIf="data.enableDelete"
+    mat-fab
+    color="primary"
+    aria-label="Delete"
+    [mat-dialog-close]="{ task: data.habit, delete: true }">
+    <mat-icon>delete</mat-icon>
+  </button>
 </div>
