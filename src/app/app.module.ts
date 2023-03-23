@@ -12,6 +12,10 @@ import { HabitComponent } from './habit/habit.component';
 import { HabitDialogComponent } from './habit-dialog/habit-dialog.component';
 import { FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -28,9 +32,11 @@ import { MatInputModule } from "@angular/material/input";
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore())
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

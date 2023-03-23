@@ -1,7 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { HabitDialogComponent, HabitDialogResult } from "./habit-dialog/habit-dialog.component";
 import { Habit } from "./habit/habit";
+import { Observable } from "rxjs";
+import {
+  addDoc,
+  collection,
+  collectionData,
+  CollectionReference, deleteDoc, doc,
+  DocumentReference,
+  Firestore,
+} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-root',
@@ -9,23 +18,31 @@ import { Habit } from "./habit/habit";
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  habits: Habit[] = [
-    {
-      title: "Do the good stuff",
-      description: "This is where you are supposed to create value for yourself",
-      repeatEntity: "Daily",
-      repeatFrequency: 1
-    },
-    {
-      title: "Testing derps",
-      description: "Obvious...",
-      repeatEntity: "Daily",
-      repeatFrequency: 1
-    }
-  ];
+  store = inject(Firestore);
+
+  /*[
+  {
+    title: "Do the good stuff",
+    description: "This is where you are supposed to create value for yourself",
+    repeatEntity: "Daily",
+    repeatFrequency: 1
+  },
+  {
+    title: "Testing derps",
+    description: "Obvious...",
+    repeatEntity: "Daily",
+    repeatFrequency: 1
+  }
+];*/
   title: any;
+  firestore: Firestore = inject(Firestore)
+  habits$: Observable<any[]>;
+  habitsCollection: CollectionReference;
+
 
   constructor(private dialog: MatDialog) {
+    this.habitsCollection = collection(this.firestore, 'habits');
+    this.habits$ = collectionData(this.habitsCollection);
   }
 
   newHabit(): void {
@@ -41,7 +58,11 @@ export class AppComponent {
         if (!result) {
           return;
         }
-        this.habits.push(result.habit);
+
+        addDoc(this.habitsCollection, result.habit).then((documentReference: DocumentReference) => {
+          // the documentReference provides access to the newly created document
+        });
+
       });
   }
 
@@ -57,14 +78,13 @@ export class AppComponent {
       if (!result) {
         return;
       }
-      const habitIndex = this.habits.indexOf(habit);
-      const dataList = this.habits;
+      /*if (result.delete) {
+        deleteDoc(doc(this.firestore, ))
 
-      if (result.delete) {
-        this.habits.splice(habitIndex, 1);
+        habitsCollection.doc(habit.id).delete();
       } else {
-        this.habits[habitIndex] = habit;
-      }
+        habitsCollection.doc(habit.id).update(habit);
+      }*/
     });
   }
 }

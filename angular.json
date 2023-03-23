@@ -105,6 +105,16 @@
               "src/**/*.html"
             ]
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "leaderslittlehelper:build:production",
+            "firebaseProject": "leaderslittlehelper",
+            "firebaseHostingSite": "leaderslittlehelper"
+          }
         }
       }
     }
