@@ -1,6 +1,6 @@
 export interface Habit {
 
-  id?: string;
+  id: string;
   title: string;
   description: string;
   repeatFrequency: number;

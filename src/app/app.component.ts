@@ -8,8 +8,7 @@ import {
   collection,
   collectionData,
   CollectionReference, deleteDoc, doc,
-  DocumentReference,
-  Firestore,
+  Firestore, updateDoc,
 } from "@angular/fire/firestore";
 
 @Component({
@@ -18,22 +17,6 @@ import {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  store = inject(Firestore);
-
-  /*[
-  {
-    title: "Do the good stuff",
-    description: "This is where you are supposed to create value for yourself",
-    repeatEntity: "Daily",
-    repeatFrequency: 1
-  },
-  {
-    title: "Testing derps",
-    description: "Obvious...",
-    repeatEntity: "Daily",
-    repeatFrequency: 1
-  }
-];*/
   title: any;
   firestore: Firestore = inject(Firestore)
   habits$: Observable<any[]>;
@@ -42,7 +25,7 @@ export class AppComponent {
 
   constructor(private dialog: MatDialog) {
     this.habitsCollection = collection(this.firestore, 'habits');
-    this.habits$ = collectionData(this.habitsCollection);
+    this.habits$ = collectionData(this.habitsCollection, {idField: 'id'}) as Observable<Habit[]>;
   }
 
   newHabit(): void {
@@ -59,10 +42,7 @@ export class AppComponent {
           return;
         }
 
-        addDoc(this.habitsCollection, result.habit).then((documentReference: DocumentReference) => {
-          // the documentReference provides access to the newly created document
-        });
-
+        addDoc(this.habitsCollection, result.habit);
       });
   }
 
@@ -74,17 +54,22 @@ export class AppComponent {
         enableDelete: true,
       },
     });
+
     dialogRef.afterClosed().subscribe((result: HabitDialogResult | undefined) => {
-      if (!result) {
+      if (!result || habit.id === undefined) {
         return;
       }
-      /*if (result.delete) {
-        deleteDoc(doc(this.firestore, ))
 
-        habitsCollection.doc(habit.id).delete();
-      } else {
-        habitsCollection.doc(habit.id).update(habit);
-      }*/
+      if (result.delete) {
+        deleteDoc(doc(this.habitsCollection, habit.id)).then(r => alert('derp'));
+      }
+
+      // update
+      const habitDocReference = doc(
+        this.firestore,
+        `habits/${habit.id}`
+      );
+      return updateDoc(habitDocReference, {...habit});
     });
   }
 }

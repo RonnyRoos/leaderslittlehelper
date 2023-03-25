@@ -1,7 +1,6 @@
 # Leader's Little Helper
 
 ## TODO
-- Fix modifying and deleting habits on firestore in app.component.ts
 - Move styling etc. to https://github.com/creativetimofficial/material-dashboard-angular2
 
 ## Dev Setup
