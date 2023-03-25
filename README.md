@@ -1,6 +1,9 @@
 # Leader's Little Helper
 
 ## TODO
+- Use this as reference style https://betterprogramming.pub/angular-13-firebase-crud-tutorial-with-angularfire-7-2d6980dcc091
+- How to iterate AngularFire collections in ts https://github.com/angular/angularfire/issues/558
+- Generic guide fore angular fire, use as reference https://blog.angular-university.io/angular-2-firebase/
 - Move styling etc. to https://github.com/creativetimofficial/material-dashboard-angular2
 
 ## Dev Setup
