@@ -9,7 +9,7 @@ import {
   Firestore, updateDoc
 } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
-import { Habit } from "../habit/habit";
+import { Habit } from "../features/habits/habit";
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +35,7 @@ export class HabitsFirestoreService {
     }) as Observable<Habit[]>;
   }
 
-  add(habit: Habit) {
+  create(habit: Habit) {
     return addDoc(this.habitsCollection, habit);
   }
 
@@ -48,6 +48,6 @@ export class HabitsFirestoreService {
   }
 
   delete(habit: Habit) {
-    return deleteDoc(doc(this.habitsCollection, habit.id)).then(r => alert('derp'));
+    return deleteDoc(doc(this.habitsCollection, habit.id));
   }
 }

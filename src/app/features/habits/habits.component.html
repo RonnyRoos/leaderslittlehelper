@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="header">
+    <h1>Nothing to see here</h1>
+  </div>
+  <div class="content">
+    <div class="list">
+      <div class="list-header">
+        <h3>All your habits</h3>
+        <button mat-raised-button color="primary" (click)="addHabit()">
+          Add new habit
+        </button>
+      </div>
+      <app-list
+        [habits$]="habits$"
+        (habitEmitter)="selectHabit($event)"
+      ></app-list>
+    </div>
+    <app-detail
+      [habit]="selectedHabit"
+      *ngIf="selectedHabit"
+      (deleteHabit)="deleteHabit()"
+      (updateHabit)="updateHabit()"
+    ></app-detail>
+  </div>
+</div>

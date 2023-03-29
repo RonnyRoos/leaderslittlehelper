@@ -1,0 +1,21 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input required formControlName="title" class="form-control" placeholder="Do good stuff" type="text" matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input required formControlName="description" class="form-control" placeholder="Wake up and shine" type="text" matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Repeat every...</mat-label>
+    <input matInput required formControlName="repeatFrequency" class="form-control" placeholder="2" type="number" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Repeat entity</mat-label>
+    <input matInput required formControlName="repeatEntity" class="form-control" placeholder="weeks" type="text" />
+  </mat-form-field>
+  <button type="button" mat-raised-button (click)="submit()" color="primary" [disabled]="!form.valid">
+    Submit
+  </button>
+</form>

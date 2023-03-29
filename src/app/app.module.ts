@@ -8,22 +8,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
-import { HabitComponent } from './habit/habit.component';
-import { HabitDialogComponent } from './habit-dialog/habit-dialog.component';
 import { FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HabitComponent,
-    HabitDialogComponent
+    AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,

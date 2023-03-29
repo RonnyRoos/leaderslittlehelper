@@ -1,13 +1,1 @@
-<mat-toolbar color="primary">
-  <mat-icon>local_fire_department</mat-icon>
-  <span>Leader's Little Helper</span>
-</mat-toolbar>
-
-<div class="content-wrapper">
-  <button (click)="newHabit()" mat-button>
-    <mat-icon>add</mat-icon>
-    Add Habit
-  </button>
-
-  <app-habit (edit)="editHabit($event)" *ngFor="let habit of habits$ | async" [habit]="habit"></app-habit>
-</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,13 @@
+<div class="detail">
+  <h2>{{ habit.title }}</h2>
+  <div class="content">
+    <div>
+      <p>Every {{ habit.repeatFrequency }} {{ habit.repeatEntity }}</p>
+      <p>{{ habit.description }}</p>
+    </div>
+  </div>
+  <div>
+    <button (click)="update()" mat-raised-button color="primary">Edit</button>
+    <button (click)="delete()" mat-raised-button color="warn">Delete</button>
+  </div>
+</div>

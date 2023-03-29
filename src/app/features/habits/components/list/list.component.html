@@ -1,0 +1,18 @@
+<div class="card-container">
+  <mat-card
+    *ngFor="let habit of habits$ | async"
+    (click)="selectHabit(habit)"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ habit.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Every <strong>{{ habit.repeatFrequency }} {{ habit.repeatEntity }}</strong>
+      </p>
+      <p>
+        {{ habit.description }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
