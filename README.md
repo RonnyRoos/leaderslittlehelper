@@ -1,9 +1,9 @@
 # Leader's Little Helper
 
 ## TODO
-- Move styling etc. to https://github.com/creativetimofficial/material-dashboard-angular2
-- 
+- ... pending
 ## Done
+- Move styling etc. to https://github.com/creativetimofficial/material-dashboard-angular2
 - Add routing (steal from codebase in guide https://github.com/puntotech/ngbytes-pokedex/tree/master/src/app)
 - Set up folder structure according to guide https://itnext.io/choosing-the-right-file-structure-for-angular-in-2020-and-beyond-a53a71f7eb05
 - Add habits as a feature
