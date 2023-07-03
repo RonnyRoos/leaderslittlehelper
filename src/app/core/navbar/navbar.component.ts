@@ -63,6 +63,7 @@ export class NavbarComponent implements OnInit {
         }
         const body = document.getElementsByTagName('body')[0];
 
+        var $layer: any = document.getElementsByClassName('close-layer')[0];
         if (this.mobile_menu_visible == 1) {
             // $('html').removeClass('nav-open');
             body.classList.remove('nav-open');
@@ -79,7 +80,7 @@ export class NavbarComponent implements OnInit {
                 $toggle.classList.add('toggled');
             }, 430);
 
-            var $layer = document.createElement('div');
+            $layer = document.createElement('div');
             $layer.setAttribute('class', 'close-layer');
 
 
@@ -93,7 +94,7 @@ export class NavbarComponent implements OnInit {
                 $layer.classList.add('visible');
             }, 100);
 
-            $layer.onclick = function() { //asign a function
+            $layer.onclick = () => { //asign a function
               body.classList.remove('nav-open');
               this.mobile_menu_visible = 0;
               $layer.classList.remove('visible');
@@ -101,7 +102,7 @@ export class NavbarComponent implements OnInit {
                   $layer.remove();
                   $toggle.classList.remove('toggled');
               }, 400);
-            }.bind(this);
+            }
 
             body.classList.add('nav-open');
             this.mobile_menu_visible = 1;
