@@ -1,25 +1,32 @@
-<div class="container">
-  <div class="header">
-    <h1>Nothing to see here</h1>
-  </div>
-  <div class="content">
-    <div class="list">
-      <div class="list-header">
-        <h3>All your habits</h3>
-        <button mat-raised-button color="primary" (click)="addHabit()">
-          Add new habit
-        </button>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-tabs card-header-primary">
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                <span class="nav-tabs-title">Habits</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+
+                    <app-list
+                      [habits$]="habits$"
+                      (habitEmitter)="selectHabit($event)"
+                    ></app-list>
+                  <app-detail
+                    [habit]="selectedHabit"
+                    *ngIf="selectedHabit"
+                    (deleteHabit)="deleteHabit()"
+                    (updateHabit)="updateHabit()"
+                  ></app-detail>
+            </div>
+          </div>
+        </div>
       </div>
-      <app-list
-        [habits$]="habits$"
-        (habitEmitter)="selectHabit($event)"
-      ></app-list>
     </div>
-    <app-detail
-      [habit]="selectedHabit"
-      *ngIf="selectedHabit"
-      (deleteHabit)="deleteHabit()"
-      (updateHabit)="updateHabit()"
-    ></app-detail>
   </div>
 </div>

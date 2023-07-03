@@ -11,6 +11,7 @@ import { ListComponent } from './components/list/list.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { FormComponent } from "./components/form/form.component";
 import { HabitsComponent } from "./habits.component";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [HabitsComponent, FormComponent, ListComponent, DetailComponent],
@@ -23,7 +24,8 @@ import { HabitsComponent } from "./habits.component";
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
 })
 export class HabitsModule { }
