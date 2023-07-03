@@ -24,7 +24,6 @@ export class HabitsComponent implements OnInit {
 
   ngOnInit(): void {
     this.habits$ = this.habitsFirestoreService.getAll();
-    console.log('derp');
   }
 
   addHabit() {
