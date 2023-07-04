@@ -1,7 +1,8 @@
 # Leader's Little Helper
 
 ## TODO
-- ... pending
+- https://github.com/RonnyRoos/leaderslittlehelper/issues
+
 ## Done
 - Move styling etc. to https://github.com/creativetimofficial/material-dashboard-angular2
 - Add routing (steal from codebase in guide https://github.com/puntotech/ngbytes-pokedex/tree/master/src/app)
